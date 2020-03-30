@@ -1,9 +1,12 @@
-package dev.revature.entities;
+package dev.learning.entities;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "assignment")
@@ -33,24 +36,11 @@ public class Assignment {
 	
 	@ManyToOne
 	@JoinColumn(name = "t_id")
-	private int tid;
+	private Teacher teacher;
 	
 	@ManyToOne
 	@JoinColumn(name = "s_id")
-	private int sid;
-
-	public Assignment(int id, String description, String duedate, double weight, double grade, String comment, int tid,
-			int sid) {
-		super();
-		this.id = id;
-		this.description = description;
-		this.duedate = duedate;
-		this.weight = weight;
-		this.grade = grade;
-		this.comment = comment;
-		this.tid = tid;
-		this.sid = sid;
-	}
+	private Student student;
 
 	public Assignment() {
 		super();
@@ -104,27 +94,33 @@ public class Assignment {
 		this.comment = comment;
 	}
 
-	public int getTid() {
-		return tid;
+	public Teacher getTeacher() {
+		return teacher;
 	}
 
-	public void setTid(int tid) {
-		this.tid = tid;
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
-	public int getSid() {
-		return sid;
+	public Student getStudent() {
+		return student;
 	}
 
-	public void setSid(int sid) {
-		this.sid = sid;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 	@Override
 	public String toString() {
 		return "Assignment [id=" + id + ", description=" + description + ", duedate=" + duedate + ", weight=" + weight
-				+ ", grade=" + grade + ", comment=" + comment + ", tid=" + tid + ", sid=" + sid + "]";
+				+ ", grade=" + grade + ", comment=" + comment + ", teacher=" + teacher + ", student=" + student + "]";
 	}
+
+	
+
+	
+
+	
 	
 	
 	
