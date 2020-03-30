@@ -1,4 +1,4 @@
-package dev.revature.entities;
+package dev.learning.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
