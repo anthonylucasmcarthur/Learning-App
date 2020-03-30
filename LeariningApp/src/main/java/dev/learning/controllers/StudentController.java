@@ -30,7 +30,7 @@ public class StudentController {
 		return si.Tlogin(student.getUsername(), student.getPassword());
 	}
 
-	@GetMapping(value = "{username}/assignments", produces = "application/json")
+	@GetMapping(value = "/assignments", produces = "application/json")
 	public Set<Assignment> getAssignments(Student student) {
 		return si.viewAssignments(student);
 	}

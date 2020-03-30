@@ -31,13 +31,13 @@ public class AssignmentController {
 
 	@PutMapping(value = "/grade/{id}", produces = "application/json")
 	public Assignment gradeAssignment(@RequestBody(required = true) int id, double grade, String comment) {
-		Assignment assignment = si.getAssigmentById(id);
-		return si.gradeAssignment(a, grade);
+		Assignment assignment = si.getAssignmentById(id);
+		return si.gradeAssignment(assignment, grade);
 	}
 
-	@DeleteMapping(value = "delete/{id}", produces = "application/json")
+	@DeleteMapping(value = "/delete/{id}", produces = "application/json")
 	public boolean deleteEmployee(@PathVariable("id") int id) {
-		Assignment assignment = as.getAssigmentById(id);
-		return as.deleteAssignment(assignment);
+		Assignment assignment = si.getAssignmentById(id);
+		return si.deleteAssignment(assignment);
 	}
 }

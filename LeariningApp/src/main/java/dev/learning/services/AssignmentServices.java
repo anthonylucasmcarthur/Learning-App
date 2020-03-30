@@ -10,6 +10,7 @@ public interface AssignmentServices {
 	
 	public Assignment AssignAssignment(Assignment a);
 	public Student submitAssignment(Assignment a);
+	public Assignment getAssignmentById(int id);
 	public Set<Assignment> viewAssignments(Student s);
 	public Set<Assignment> viewAssignments(Teacher t);
 	public Set<Assignment> viewAssignmentByStudent(int sid);

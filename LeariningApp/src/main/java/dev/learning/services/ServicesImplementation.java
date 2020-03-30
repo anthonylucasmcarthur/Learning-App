@@ -41,8 +41,6 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 			return null;
 		}
 
-		
-
 	}
 
 	@Override
@@ -53,41 +51,37 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 
 	@Override
 	public Student login(String username, String password) {
+		Student s;
+		try {
+			s = sr.findByUsername(username);
 
-		{
+			if (s.getPassword().equals(password)) {
 
-			Student s;
-			try {
-				s = sr.findByUsername(username);
+				return s;
 
-				if (s.getPassword().equals(password)) {
-
-					return s;
-
-				} else {
-					System.out.println("Invalid password");
-					return null;
-				}
-			} catch (NullPointerException n) {
-				System.out.println("Invalid username");
+			} else {
+				System.out.println("Invalid password");
 				return null;
 			}
-
+		} catch (NullPointerException n) {
+			System.out.println("Invalid username");
+			return null;
 		}
+
 	}
 
 	@Override
 	public Set<Student> viewStudents(Teacher teacher) {
 		Set<Student> s = sr.viewStudents(teacher);
 		return s;
-		
+
 	}
 
 	@Override
 	public Set<Assignment> viewAssignmentByStudent(int sid) {
 		Set<Assignment> a = ar.findAssignmentByStudent(sid);
 		return a;
-	
+
 	}
 
 	@Override
@@ -103,7 +97,7 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 //		double weight = a.getWeight();
 //		Assignment as = ar.createAssignment(description, duedate, weight);
 		Assignment as = ar.createAssignment(a);
-		
+
 		return as;
 	}
 
@@ -113,23 +107,28 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 		return a;
 	}
 
-
 	@Override
 	public Set<Assignment> viewAssignments(Student s) {
-		
-		return null;
+		Set<Assignment> as = ar.viewAssignments(s);
+		return as;
 	}
 
 	@Override
 	public Set<Assignment> viewAssignments(Teacher t) {
-		// TODO Auto-generated method stub
-		return null;
+		Set<Assignment> as = ar.viewAssignments(s);
+		return as;
 	}
 
 	@Override
 	public boolean deleteAssignment(Assignment a) {
-		// TODO Auto-generated method stub
-		return false;
+		ar.deleteAssignment(a);
+		return true;
+	}
+
+	@Override
+	public Assignment getAssignmentById(int id) {
+		Assignment a = ar.findById(id);
+		return a;
 	}
 
 }
