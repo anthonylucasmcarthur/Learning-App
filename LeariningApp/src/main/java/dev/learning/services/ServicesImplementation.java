@@ -11,43 +11,39 @@ import dev.learning.repositories.AssignmentRepo;
 import dev.learning.repositories.StudentRepo;
 import dev.learning.repositories.TeacherRepo;
 
-public class ServicesImplementation implements StudentServices, TeacherServices, AssignmentServices{
+public class ServicesImplementation implements StudentServices, TeacherServices, AssignmentServices {
 
 	@Autowired
 	StudentRepo sr;
-    
-    @Autowired
-    TeacherRepo tr;
-    
-    @Autowired
-    AssignmentRepo ar;
-    
-    
- 
+
+	@Autowired
+	TeacherRepo tr;
+
+	@Autowired
+	AssignmentRepo ar;
+
 	@Override
 	public Teacher Tlogin(String username, String password) {
 		Teacher t;
-		try {		
-			t =	tr.findByUsername(username);
-				
-				if(s.getPassword().equals(password)){
-				
-				return t;	
-					
-				}else {
-					System.out.println("Access Denied");
-					return null;
-				}}
-		catch(NullPointerException n) {
-			System.out.println("Invalid username");
-			return null;
-		}
+		try {
+			t = tr.findByUsername(username);
+
+			if (t.getPassword().equals(password)) {
+
+				return t;
+
+			} else {
+				System.out.println("Access Denied");
 
 			}
+		} catch (NullPointerException n) {
+			System.out.println("Invalid username");
+
+		}
+
 		return null;
+
 	}
-	
-    
 
 	@Override
 	public Teacher commentT(Assignment a, String comment) {
@@ -57,25 +53,25 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 
 	@Override
 	public Student login(String username, String password) {
-		  
+
 		{
-			
+
 			Student s;
-	try {		
-		s =	sr.findByUsername(username);
-			
-			if(s.getPassword().equals(password)){
-			
-			return s;	
-				
-			}else {
-				System.out.println("Access Denied");
+			try {
+				s = sr.findByUsername(username);
+
+				if (s.getPassword().equals(password)) {
+
+					return s;
+
+				} else {
+					System.out.println("Access Denied");
+					return null;
+				}
+			} catch (NullPointerException n) {
+				System.out.println("Invalid username");
 				return null;
-			}}
-	catch(NullPointerException n) {
-		System.out.println("Invalid username");
-		return null;
-	}
+			}
 
 		}
 	}
@@ -84,17 +80,14 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 	public Set<Student> viewStudents(Teacher teacher) {
 		Set<Student> s = sr.viewStudents(teacher);
 		return s;
-		return null;
+		
 	}
 
 	@Override
 	public Set<Assignment> viewAssignmentByStudent(int sid) {
-Set<Assignment> a;
-		
-		a = ar.findAssignmentByStudent(sid);
-		
+		Set<Assignment> a = ar.findAssignmentByStudent(sid);
 		return a;
-		return null;
+	
 	}
 
 	@Override
@@ -105,12 +98,13 @@ Set<Assignment> a;
 
 	@Override
 	public Assignment AssignAssignment(Assignment a) {
- 
-		Assignment as;
-		as = ar.createAssignment(description, duedate, weight)
+//		String description = a.getDescription();
+//		String duedate = a.getDuedate();
+//		double weight = a.getWeight();
+//		Assignment as = ar.createAssignment(description, duedate, weight);
+		Assignment as = ar.createAssignment(a);
 		
-		
-		return null;
+		return as;
 	}
 
 	@Override
