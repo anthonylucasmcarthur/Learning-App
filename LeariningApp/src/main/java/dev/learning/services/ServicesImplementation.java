@@ -33,15 +33,15 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 				return t;
 
 			} else {
-				System.out.println("Access Denied");
-
+				System.out.println("Invalid password");
+				return null;
 			}
 		} catch (NullPointerException n) {
 			System.out.println("Invalid username");
-
+			return null;
 		}
 
-		return null;
+		
 
 	}
 
@@ -65,7 +65,7 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 					return s;
 
 				} else {
-					System.out.println("Access Denied");
+					System.out.println("Invalid password");
 					return null;
 				}
 			} catch (NullPointerException n) {
@@ -108,15 +108,28 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 	}
 
 	@Override
-	public Teacher gradeAssignment(Assignment a, double grade) {
+	public Assignment gradeAssignment(Assignment a, double grade) {
+		a.setGrade(grade);
+		return a;
+	}
+
+
+	@Override
+	public Set<Assignment> viewAssignments(Student s) {
+		
+		return null;
+	}
+
+	@Override
+	public Set<Assignment> viewAssignments(Teacher t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Set<Assignment> viewAssignment(Assignment a) {
+	public boolean deleteAssignment(Assignment a) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 }
