@@ -1,10 +1,17 @@
-package dev.revature.entities;
+package dev.learning.entities;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table
@@ -29,6 +36,14 @@ public class Teacher {
 		private String password;
 
 
+//		@OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+//		private Set<Student> students = new HashSet<Student>();
+		
+		
+//		@OneToMany(mappedBy = "assignements", fetch = FetchType.LAZY)
+//		private Set<Assignment> assignments = new HashSet<Assignment>();
+		
+		
 		public Teacher(int id, String username, String firstname, String lastname, String password) {
 			super();
 			this.id = id;
@@ -97,11 +112,14 @@ public class Teacher {
 		@Override
 		public String toString() {
 			return "Teacher [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname="
-					+ lastname + ", password=" + password + ", getId()=" + getId() + ", getUsername()=" + getUsername()
-					+ ", getFirstname()=" + getFirstname() + ", getLastname()=" + getLastname() + ", getPassword()="
-					+ getPassword() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-					+ super.toString() + "]";
+					+ lastname + ", password=" + password + "]";
 		}
+
+
+		
+
+
+		
 	
 		
 	

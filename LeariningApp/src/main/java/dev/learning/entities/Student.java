@@ -1,19 +1,26 @@
-package dev.revature.entities;
+package dev.learning.entities;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table
 public class Student {
 
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "s_id")
 	private int id;
@@ -35,19 +42,11 @@ public class Student {
 
 	@ManyToOne
 	@JoinColumn(name = "t_id")
-	
-	private int tid;
+	private Teacher teacher;
 
-	public Student(int id, String username, String firstname, String lastname, String password, int tid) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.password = password;
-		this.tid = tid;
-	}
 
+//	@OneToMany(mappedBy = "assignements", fetch = FetchType.LAZY)
+//	private Set<Assignment> assignments = new HashSet<Assignment>();
 
 	public Student() {
 		super();
@@ -103,20 +102,31 @@ public class Student {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public void setTid(int tid) {
-		this.tid = tid;
+
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
 
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", password=" + password + ", getId()=" + getId() + ", getUsername()=" + getUsername()
-				+ ", getFirstname()=" + getFirstname() + ", getLastname()=" + getLastname() + ", getPassword()="
-				+ getPassword() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "tid = tid "]";"
+				+ ", password=" + password + ", teacher=" + teacher + "]";
 	}
+	
+	
+
+
+	
+
+
+	
 	
 	
 	
