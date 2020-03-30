@@ -45,8 +45,8 @@ public class Student {
 	private Teacher teacher;
 
 
-	@OneToMany(mappedBy = "assignements", fetch = FetchType.LAZY)
-	private Set<Assignment> assignments = new HashSet<Assignment>();
+//	@OneToMany(mappedBy = "assignements", fetch = FetchType.LAZY)
+//	private Set<Assignment> assignments = new HashSet<Assignment>();
 
 	public Student() {
 		super();
