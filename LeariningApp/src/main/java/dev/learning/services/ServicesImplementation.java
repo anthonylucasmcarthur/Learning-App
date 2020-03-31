@@ -46,9 +46,11 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 	}
 
 	@Override
-	public Teacher commentT(Assignment a, String comment) {
-		// TODO Auto-generated method stub
-		return null;
+	public Assignment commentT(Assignment a, int aid, String comment) {
+		
+		Assignment tc = ar.comment(a, comment);
+		
+		return tc;
 	}
 
 	@Override
@@ -91,8 +93,8 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 	}
 
 	@Override
-	public Student submitAssignment(Assignment a) {
-		// TODO Auto-generated method stub
+	public Student submitAssignment(Assignment a, int aid, String comment) {
+		ar.save(a);
 		return null;
 	}
 
@@ -101,7 +103,7 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 //		String description = a.getDescription();
 //		String duedate = a.getDuedate();
 //		double weight = a.getWeight();
-//		Assignment as = ar.createAssignment(description, duedate, weight);
+	//Assignment as = ar.createAssignment(description, duedate, weight);
 		Assignment as = ar.createAssignment(a);
 		
 		return as;
@@ -117,19 +119,43 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 	@Override
 	public Set<Assignment> viewAssignments(Student s) {
 		
-		return null;
+		Set<Assignment> sa = ar.viewAssignments(s);
+		return sa;
 	}
 
-	@Override
-	public Set<Assignment> viewAssignments(Teacher t) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public Set<Assignment> viewAssignmentsT(Teacher t) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public boolean deleteAssignment(Assignment a) {
-		// TODO Auto-generated method stub
+		
+		ar.delete(a);
+		
 		return false;
 	}
+
+	@Override
+	public Set<Assignment> viewAssignmentsT(Teacher t) {
+	
+		Set<Assignment> st = ar.viewAssignmentsT(t);
+		return st;
+	}
+
+	public Assignment getAssignmentById(int aid) {
+		a = ar.findById(aid);
+		
+		return a;
+	}
+//	@Override
+//	public Assignment commentT(Assignment a, String comment) {
+//		
+//		Assignment ac = ar.comment(a, comment);
+//		
+//		
+//		return ac;
+//	}
 
 }
