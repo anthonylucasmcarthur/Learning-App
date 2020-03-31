@@ -97,9 +97,12 @@ class LeariningAppApplicationTests {
 	@Test // failed
 	void createAssignment() {
 		Assignment a = new Assignment();
+		a.setId(0);
 		a.setDescription("Read War and Peace");
 		a.setDuedate("4/3");
 		a.setWeight(.1);
+		a.setGrade(3.0);
+		a.setComment("Faster");
 		Student student = sr.findById(2);
 		a.setStudent(student);
 		Teacher teacher = tr.findById(1);
@@ -119,7 +122,7 @@ class LeariningAppApplicationTests {
 	@Test // passed
 	void updateAssignment() {
 		Assignment assignment = ar.findById(1);
-		assignment.setGrade(3.5);
+		assignment.setGrade(3.0);
 		assignment.setComment("Good job");
 		ar.save(assignment);
 	}
@@ -170,9 +173,14 @@ class LeariningAppApplicationTests {
 	@Test // failed
 	void assignAssignment() {
 		Assignment a = new Assignment();
+		a.setId(5);
 		a.setDescription("Read the Great Gatsby");
 		a.setDuedate("4/4");
 		a.setWeight(0.2);
+		Student student = sr.findById(2);
+		a.setStudent(student);
+		Teacher teacher = tr.findById(1);
+		a.setTeacher(teacher);
 		si.AssignAssignment(a);
 	}
 	
