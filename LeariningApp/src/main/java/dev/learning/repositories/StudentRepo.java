@@ -12,9 +12,8 @@ import dev.learning.entities.Teacher;
 @Repository
 public interface StudentRepo extends CrudRepository<Student, Integer>{
 
-	public Student findByid(int id);
+	public Student findById(int id);
 	public Student findByUsername(String username);
-	public Set<Student> viewStudents(Teacher teacher);
-	//public Student save(Assignment a);
+//	public Set<Student> viewStudentsTeacher(int id);
 	
 }

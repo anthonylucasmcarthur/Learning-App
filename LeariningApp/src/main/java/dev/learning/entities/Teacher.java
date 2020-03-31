@@ -36,12 +36,12 @@ public class Teacher {
 		private String password;
 
 
-//		@OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
-//		private Set<Student> students = new HashSet<Student>();
+		@OneToMany(fetch = FetchType.LAZY)
+		private Set<Student> students = new HashSet<Student>();
+
 		
-		
-//		@OneToMany(mappedBy = "assignements", fetch = FetchType.LAZY)
-//		private Set<Assignment> assignments = new HashSet<Assignment>();
+		@OneToMany(fetch = FetchType.LAZY)
+		private Set<Assignment> assignments = new HashSet<Assignment>();
 		
 		
 		public Teacher(int id, String username, String firstname, String lastname, String password) {

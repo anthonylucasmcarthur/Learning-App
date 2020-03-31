@@ -3,6 +3,7 @@ package dev.learning.services;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import dev.learning.entities.Assignment;
 import dev.learning.entities.Student;
@@ -11,6 +12,7 @@ import dev.learning.repositories.AssignmentRepo;
 import dev.learning.repositories.StudentRepo;
 import dev.learning.repositories.TeacherRepo;
 
+@Service
 public class ServicesImplementation implements StudentServices, TeacherServices, AssignmentServices {
 
 	@Autowired
@@ -41,8 +43,6 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 			return null;
 		}
 
-		
-
 	}
 
 	@Override
@@ -55,41 +55,37 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 
 	@Override
 	public Student login(String username, String password) {
+		Student s;
+		try {
+			s = sr.findByUsername(username);
 
-		{
+			if (s.getPassword().equals(password)) {
 
-			Student s;
-			try {
-				s = sr.findByUsername(username);
+				return s;
 
-				if (s.getPassword().equals(password)) {
-
-					return s;
-
-				} else {
-					System.out.println("Invalid password");
-					return null;
-				}
-			} catch (NullPointerException n) {
-				System.out.println("Invalid username");
+			} else {
+				System.out.println("Invalid password");
 				return null;
 			}
-
+		} catch (NullPointerException n) {
+			System.out.println("Invalid username");
+			return null;
 		}
+
 	}
 
 	@Override
 	public Set<Student> viewStudents(Teacher teacher) {
 		Set<Student> s = sr.viewStudents(teacher);
 		return s;
-		
+
 	}
 
 	@Override
 	public Set<Assignment> viewAssignmentByStudent(int sid) {
 		Set<Assignment> a = ar.findAssignmentByStudent(sid);
 		return a;
-	
+
 	}
 
 	@Override
@@ -105,7 +101,7 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 //		double weight = a.getWeight();
 	//Assignment as = ar.createAssignment(description, duedate, weight);
 		Assignment as = ar.createAssignment(a);
-		
+
 		return as;
 	}
 
@@ -114,7 +110,6 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 		a.setGrade(grade);
 		return a;
 	}
-
 
 	@Override
 	public Set<Assignment> viewAssignments(Student s) {
