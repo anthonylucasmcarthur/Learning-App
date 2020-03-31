@@ -1,4 +1,4 @@
-package dev.learning.services;
+package src.main.java.dev.learning.services;
 
 import java.util.Set;
 
