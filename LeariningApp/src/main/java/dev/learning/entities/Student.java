@@ -114,6 +114,17 @@ public class Student {
 	}
 
 
+	
+	public Set<Assignment> getAssignments() {
+		return assignments;
+	}
+
+
+	public void setAssignments(Set<Assignment> assignments) {
+		this.assignments = assignments;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname

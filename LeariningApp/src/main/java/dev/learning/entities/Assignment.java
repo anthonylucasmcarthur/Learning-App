@@ -35,12 +35,14 @@ public class Assignment {
 	@Column(name = "comment")
 	private String comment;
 	
-	@ManyToOne
+	
 	@JoinColumn(name = "t_id")
+	@ManyToOne
 	private Teacher teacher;
 	
-	@ManyToOne
+	
 	@JoinColumn(name = "s_id")
+	@ManyToOne
 	private Student student;
 
 	public Assignment() {
