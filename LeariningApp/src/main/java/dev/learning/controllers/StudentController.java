@@ -26,8 +26,8 @@ public class StudentController {
 	private ServicesImplementation si;
 	
 	@PostMapping(value = "/login")
-	public Student login(@RequestBody Student student) {
-		return si.login(student.getUsername(), student.getPassword());
+	public Student login(@RequestBody String username, String password) {
+		return si.login(username, password);
 	}
 
 	@GetMapping(value = "{username}/assignments", produces = "application/json")
