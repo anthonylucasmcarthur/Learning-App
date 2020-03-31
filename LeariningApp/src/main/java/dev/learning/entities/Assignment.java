@@ -35,7 +35,7 @@ public class Assignment {
 	@Column(name = "comment")
 	private String comment;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "t_id")
 	private Teacher teacher;
 	

@@ -13,6 +13,7 @@ import dev.learning.entities.Teacher;
 import dev.learning.repositories.AssignmentRepo;
 import dev.learning.repositories.StudentRepo;
 import dev.learning.repositories.TeacherRepo;
+import dev.learning.services.ServicesImplementation;
 
 
 
@@ -42,6 +43,10 @@ class LeariningAppApplicationTests {
 		System.out.println(teacher);	
 	}
 	
+	
+	
+	
+	
 	@Autowired
 	StudentRepo sr;
 	
@@ -69,6 +74,10 @@ class LeariningAppApplicationTests {
 //		Set<Student> students = sr.viewStudentsTeacher(1);
 //		System.out.println(students);
 	}
+	
+	
+	
+	
 	
 	@Autowired
 	AssignmentRepo ar;
@@ -101,6 +110,11 @@ class LeariningAppApplicationTests {
 //		System.out.println(assignment);
 	}
 	
+	@Test //failed
+	void findAssignmentByStudent() {
+		Set<Assignment> as = ar.findAssignmentsForStudent(1);
+		System.out.println(as);
+	}
 	
 	@Test // passed
 	void updateAssignment() {
@@ -115,6 +129,85 @@ class LeariningAppApplicationTests {
 	void deleteAssignment() {
 		Assignment assignment = ar.findById(2);
 		ar.delete(assignment);
+	}
+	
+	
+	
+	
+	@Autowired
+	ServicesImplementation si;
+	
+	@Test // passed
+	void teacherLogin() {
+		Teacher t = si.Tlogin("aran", "12345");
+		System.out.println(t);
+	}
+	
+	@Test 
+	void comment() {
+		
+	}
+	
+	@Test // passed
+	void login() {
+		Teacher t = si.Tlogin("scol", "12345");
+		System.out.println(t);
+	}
+	
+	@Test // failed
+	void viewStudents() {
+		Teacher t = tr.findById(1);
+		Set<Student> s = t.getStudents();
+		System.out.println(s);
+	}
+	
+
+	@Test // failed
+	void submitAssignment() {
+		
+	}
+	
+	@Test // failed
+	void assignAssignment() {
+		Assignment a = new Assignment();
+		a.setDescription("Read the Great Gatsby");
+		a.setDuedate("4/4");
+		a.setWeight(0.2);
+		si.AssignAssignment(a);
+	}
+	
+	@Test // passed
+	void gradeAssignment() {
+		Assignment a = ar.findById(1);
+		a.setGrade(3.0);
+		a.setComment("Read more");
+		si.AssignAssignment(a);
+	}
+	
+	@Test // failed
+	void viewAssignments() {
+		Student s = sr.findById(2);
+		Set<Assignment> a = s.getAssignments();
+		System.out.println(a);
+	}
+	
+	@Test // passed
+	void deleteAssign() {
+		Assignment a = ar.findById(3);
+		si.deleteAssignment(a);
+	}
+	
+	@Test // failed
+	void viewAssignmentsT() {
+		Teacher t = tr.findById(1);
+		Set<Assignment> a = t.getAssignments();
+		System.out.println(a);
+	}
+	
+	@Test // passed
+	void getAssignmentById() {
+		Assignment assignment = si.getAssignmentById(1);
+		System.out.println(assignment);
 	}
 	
 }

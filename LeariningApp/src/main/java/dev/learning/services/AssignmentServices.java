@@ -13,7 +13,7 @@ public interface AssignmentServices {
 	public Set<Assignment> viewAssignments(Student s);
 	public Set<Assignment> viewAssignmentsT(Teacher t);
 	public Set<Assignment> viewAssignmentByStudent(int sid);
-	public Assignment gradeAssignment(Assignment a, double grade);
+	public Assignment gradeAssignment(Assignment a);
 	public boolean deleteAssignment(Assignment a);
 	public Assignment commentT(Assignment a, int aid, String comment);
 	public Assignment getAssignmentById(int aid);
