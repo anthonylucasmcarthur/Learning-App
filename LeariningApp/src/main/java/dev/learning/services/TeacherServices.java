@@ -10,6 +10,6 @@ import dev.learning.entities.Teacher;
 public interface TeacherServices {
 
 	public Teacher Tlogin(String username, String password);
-	public Teacher commentT(Assignment a, String comment);
+	
 	
 }

@@ -26,13 +26,22 @@ public class StudentController {
 	private ServicesImplementation si;
 	
 	@PostMapping(value = "/login")
-	public Teacher loginT(@RequestBody Student student) {
-		return si.Tlogin(student.getUsername(), student.getPassword());
+	public Student login(@RequestBody Student student) {
+		return si.login(student.getUsername(), student.getPassword());
 	}
 
 	@GetMapping(value = "/assignments", produces = "application/json")
 	public Set<Assignment> getAssignments(Student student) {
 		return si.viewAssignments(student);
 	}
+	
+	@GetMapping(value = "{students}/assignments", produces = "application/json")
+	public Set<Student> getStudents(Teacher teacher) {
+		return si.viewStudents(teacher);
+	}
+	
+	
+	
+	
 
 }
