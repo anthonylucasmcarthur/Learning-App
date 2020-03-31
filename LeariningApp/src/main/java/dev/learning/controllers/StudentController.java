@@ -35,10 +35,7 @@ public class StudentController {
 		return si.viewAssignments(student);
 	}
 	
-	@GetMapping(value = "{students}/assignments", produces = "application/json")
-	public Set<Student> getStudents(Teacher teacher) {
-		return si.viewStudents(teacher);
-	}
+
 	
 	
 	

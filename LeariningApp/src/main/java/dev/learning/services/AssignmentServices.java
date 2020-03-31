@@ -9,7 +9,7 @@ import dev.learning.entities.Teacher;
 public interface AssignmentServices {
 	
 	public Assignment AssignAssignment(Assignment a);
-	public Student submitAssignment(Assignment a, int aid, String comment);
+	public Assignment submitAssignment(Assignment a, int aid, String comment);
 	public Set<Assignment> viewAssignments(Student s);
 	public Set<Assignment> viewAssignmentsT(Teacher t);
 	public Set<Assignment> viewAssignmentByStudent(int sid);

@@ -50,7 +50,7 @@ public class AssignmentController {
 	}
 
 	@PutMapping(value = "/submit/{id}", produces = "application/json")
-	public Student submitAssignment(@RequestBody(required = true) Assignment a, int aid, String comment) {
+	public Assignment submitAssignment(@RequestBody(required = true) Assignment a, int aid, String comment) {
 		Assignment assignment = si.getAssignmentById(aid);
 		assignment.getComment();
 		return si.submitAssignment(assignment, aid, comment);
