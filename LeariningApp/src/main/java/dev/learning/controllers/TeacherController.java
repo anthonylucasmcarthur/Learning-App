@@ -39,9 +39,11 @@ public class TeacherController {
 	}
 	
 	@GetMapping(value = "/assignments", produces = "application/json")
-	public Set<Assignment> getAssignments(Teacher t) {
-		return si.viewAssignments(t);
+	public Set<Assignment> getAssignmentsT(Teacher t) {
+		return si.viewAssignmentsT(t);
 	}
+	
+	
 
 	
 
