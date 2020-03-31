@@ -47,9 +47,7 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 
 	@Override
 	public Assignment commentT(Assignment a, int aid, String comment) {
-		
 		Assignment tc = ar.comment(a, comment);
-		
 		return tc;
 	}
 
@@ -76,81 +74,55 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 
 	@Override
 	public Set<Student> viewStudents(Teacher teacher) {
-		Set<Student> s = sr.viewStudents(teacher);
+		Set<Student> s = teacher.getStudents();
 		return s;
-
 	}
 
 	@Override
 	public Set<Assignment> viewAssignmentByStudent(int sid) {
 		Set<Assignment> a = ar.findAssignmentByStudent(sid);
 		return a;
-
 	}
 
 	@Override
 	public Student submitAssignment(Assignment a, int aid, String comment) {
-		ar.save(a);
-		return null;
+		return ar.save(a);
 	}
 
+	
 	@Override
 	public Assignment AssignAssignment(Assignment a) {
-//		String description = a.getDescription();
-//		String duedate = a.getDuedate();
-//		double weight = a.getWeight();
-	//Assignment as = ar.createAssignment(description, duedate, weight);
-		Assignment as = ar.createAssignment(a);
-
-		return as;
+		return ar.save(a);
 	}
 
 	@Override
-	public Assignment gradeAssignment(Assignment a, double grade) {
-		a.setGrade(grade);
-		return a;
+	public Assignment gradeAssignment(Assignment a) {
+		return ar.save(a);
 	}
 
 	@Override
 	public Set<Assignment> viewAssignments(Student s) {
-		
-		Set<Assignment> sa = ar.viewAssignments(s);
+		Set<Assignment> sa = s.getAssignments();
 		return sa;
 	}
 
-//	@Override
-//	public Set<Assignment> viewAssignmentsT(Teacher t) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
 	@Override
 	public boolean deleteAssignment(Assignment a) {
-		
 		ar.delete(a);
-		
-		return false;
+		return true;
 	}
 
 	@Override
 	public Set<Assignment> viewAssignmentsT(Teacher t) {
-	
-		Set<Assignment> st = ar.viewAssignmentsT(t);
+		Set<Assignment> st = t.getAssignments();
 		return st;
 	}
 
+	@Override
 	public Assignment getAssignmentById(int aid) {
-		a = ar.findById(aid);
-		
+		Assignment a = ar.findById(aid);
 		return a;
 	}
-//	@Override
-//	public Assignment commentT(Assignment a, String comment) {
-//		
-//		Assignment ac = ar.comment(a, comment);
-//		
-//		
-//		return ac;
-//	}
+
 
 }

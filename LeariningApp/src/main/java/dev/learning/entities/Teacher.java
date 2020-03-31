@@ -109,6 +109,27 @@ public class Teacher {
 		}
 
 
+		
+		public Set<Student> getStudents() {
+			return students;
+		}
+
+
+		public void setStudents(Set<Student> students) {
+			this.students = students;
+		}
+
+
+		public Set<Assignment> getAssignments() {
+			return assignments;
+		}
+
+
+		public void setAssignments(Set<Assignment> assignments) {
+			this.assignments = assignments;
+		}
+
+
 		@Override
 		public String toString() {
 			return "Teacher [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname="

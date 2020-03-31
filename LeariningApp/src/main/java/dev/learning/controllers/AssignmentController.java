@@ -23,25 +23,24 @@ public class AssignmentController {
 
 	@Autowired
 	private ServicesImplementation si;
-	
+
 	@PostMapping(value = "/create")
-	public Assignment addAssignment(@RequestBody(required = true) Assignment a) {
-	String description = a.getDescription();
-	a.setDescription(description);
-	String duedate = a.getDuedate();
-	a.setDuedate(duedate);
-	Double weight = a.getWeight();
-	a.setWeight(weight);
+	public Assignment addAssignment(@RequestBody(required = true) String description, String duedate, double weight) {
+		Assignment a = new Assignment();
+		a.setDescription(description);
+		a.setDuedate(duedate);
+		a.setWeight(weight);
 		return si.AssignAssignment(a);
 	}
 
 	@PutMapping(value = "/grade/{id}", produces = "application/json")
 	public Assignment gradeAssignment(@RequestBody(required = true) int id, double grade, String comment) {
 		Assignment assignment = si.getAssignmentById(id);
-		double g = assignment.getGrade();
-		assignment.setGrade(g);
-		return si.gradeAssignment(assignment, g);
+		assignment.setGrade(grade);
+		assignment.setComment(comment);
+		return si.gradeAssignment(assignment);
 	}
+
 	@PutMapping(value = "/comment/{id}", produces = "application/json")
 	public Assignment CommentT(@RequestBody(required = true) int id, String comment) {
 		Assignment assignment = si.getAssignmentById(id);
@@ -49,7 +48,7 @@ public class AssignmentController {
 		assignment.setComment(c);
 		return si.commentT(assignment, id, c);
 	}
-	
+
 	@PutMapping(value = "/submit/{id}", produces = "application/json")
 	public Student submitAssignment(@RequestBody(required = true) Assignment a, int aid, String comment) {
 		Assignment assignment = si.getAssignmentById(aid);
@@ -62,7 +61,5 @@ public class AssignmentController {
 		Assignment assignment = si.getAssignmentById(id);
 		return si.deleteAssignment(assignment);
 	}
-	
-	
-	
+
 }
