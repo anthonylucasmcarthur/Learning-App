@@ -3,6 +3,7 @@ package dev.learning.services;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import dev.learning.entities.Assignment;
 import dev.learning.entities.Student;
@@ -11,6 +12,7 @@ import dev.learning.repositories.AssignmentRepo;
 import dev.learning.repositories.StudentRepo;
 import dev.learning.repositories.TeacherRepo;
 
+@Service
 public class ServicesImplementation implements StudentServices, TeacherServices, AssignmentServices {
 
 	@Autowired
