@@ -16,7 +16,7 @@ public interface AssignmentRepo extends CrudRepository<Assignment, Integer>{
 	public Assignment createAssignment(Assignment assignment);
 //	public Set<Assignment> viewAssignments(Teacher teacher);
 //	public Set<Assignment> viewAssignments(Student student);
-	public Assignment findAssignmentByStudent(Student student);
+	public Set<Assignment> findAssignmentByStudent(int sid);
 	public Assignment gradeAssignment(long grade, String comment);
 	public boolean deleteAssignment(Assignment assignment);
 
