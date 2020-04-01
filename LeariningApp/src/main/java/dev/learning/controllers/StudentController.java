@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,20 +26,19 @@ public class StudentController {
 	@Autowired
 	private ServicesImplementation si;
 	
+	
 	@PostMapping(value = "/login")
-	public Student login(@RequestBody Student student) {
-		return si.login(student.getUsername(), student.getPassword());
+	public Student login(String username, String password) {
+		return si.login(username, password);
 	}
 
-	@GetMapping(value = "/assignments", produces = "application/json")
-	public Set<Assignment> getAssignments(Student student) {
+	@GetMapping(value = "/assignments/{id}", produces = "application/json")
+	public Set<Assignment> getAssignments(@PathVariable("id")int id) {
+		Student student = si.getStudentById(id);
 		return si.viewAssignments(student);
 	}
 	
-	@GetMapping(value = "{students}/assignments", produces = "application/json")
-	public Set<Student> getStudents(Teacher teacher) {
-		return si.viewStudents(teacher);
-	}
+
 	
 	
 	

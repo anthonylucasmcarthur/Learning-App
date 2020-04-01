@@ -29,17 +29,19 @@ public class TeacherController {
 	private ServicesImplementation si;
 
 	@PostMapping(value = "/login")
-	public Student login(@RequestBody Student student) {
-		return si.login(student.getUsername(), student.getPassword());
+	public Teacher login(String username, String password) {
+		return si.Tlogin(username, password);
 	}
 
-	@GetMapping(value = "/students", produces = "application/json")
-	public Set<Student> getStudents(Teacher teacher) {
+	@GetMapping(value = "/students/{id}", produces = "application/json")
+	public Set<Student> getStudents(@PathVariable("id")int id) {
+		Teacher teacher = si.getTeacherById(id);
 		return si.viewStudents(teacher);
 	}
 	
-	@GetMapping(value = "/assignments", produces = "application/json")
-	public Set<Assignment> getAssignmentsT(Teacher t) {
+	@GetMapping(value = "/assignments/{id}", produces = "application/json")
+	public Set<Assignment> getAssignmentsT(@PathVariable("id")int id) {
+		Teacher t = si.getTeacherById(id);
 		return si.viewAssignmentsT(t);
 	}
 	

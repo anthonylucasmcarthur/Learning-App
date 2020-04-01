@@ -1,14 +1,9 @@
 package dev.learning.entities;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -21,8 +16,6 @@ public class Teacher {
 		@Column(name = "t_id")
 		private int id;
 		
-		@Column(name = "username")
-		private String username;
 		
 		@Column(name = "firstname")
 		private String firstname;
@@ -32,24 +25,21 @@ public class Teacher {
 		private String lastname;
 		
 		
+		@Column(name = "username")
+		private String username;
+	
+		
 		@Column(name = "password")
 		private String password;
 
 
-		@OneToMany(fetch = FetchType.LAZY)
-		private Set<Student> students = new HashSet<Student>();
-
 		
-		@OneToMany(fetch = FetchType.LAZY)
-		private Set<Assignment> assignments = new HashSet<Assignment>();
-		
-		
-		public Teacher(int id, String username, String firstname, String lastname, String password) {
+		public Teacher(int id,  String firstname, String lastname, String username, String password) {
 			super();
 			this.id = id;
-			this.username = username;
 			this.firstname = firstname;
 			this.lastname = lastname;
+			this.username = username;
 			this.password = password;
 		}
 
@@ -108,26 +98,6 @@ public class Teacher {
 			this.password = password;
 		}
 
-
-		
-		public Set<Student> getStudents() {
-			return students;
-		}
-
-
-		public void setStudents(Set<Student> students) {
-			this.students = students;
-		}
-
-
-		public Set<Assignment> getAssignments() {
-			return assignments;
-		}
-
-
-		public void setAssignments(Set<Assignment> assignments) {
-			this.assignments = assignments;
-		}
 
 
 		@Override
