@@ -68,11 +68,11 @@ class LeariningAppApplicationTests {
 		System.out.println(student);
 	}
 	
-	@Test // failed
+	@Test // passed
 	void findStudents() {
 		Teacher teacher = tr.findById(1);
-//		Set<Student> students = sr.viewStudentsTeacher(1);
-//		System.out.println(students);
+		Set<Student> students = sr.findByTeacher(teacher);
+		System.out.println(students);
 	}
 	
 	
@@ -94,7 +94,7 @@ class LeariningAppApplicationTests {
 		System.out.println(assignment);
 	}
 	
-	@Test // failed
+	@Test 
 	void createAssignment() {
 		Assignment a = new Assignment();
 		a.setId(0);
@@ -113,9 +113,17 @@ class LeariningAppApplicationTests {
 //		System.out.println(assignment);
 	}
 	
-	@Test //failed
-	void findAssignmentByStudent() {
-		Set<Assignment> as = ar.findAssignmentsForStudent(1);
+	@Test // passed
+	void findByTeacher() {
+		Teacher teacher = tr.findById(1);
+		Set<Assignment> as = ar.findByTeacher(teacher);
+		System.out.println(as);
+	}
+	
+	@Test // passed
+	void findByStudent() {
+		Student s = sr.findById(2);
+		Set<Assignment> as = ar.findByStudent(s);
 		System.out.println(as);
 	}
 	
@@ -153,19 +161,19 @@ class LeariningAppApplicationTests {
 	
 	@Test // passed
 	void login() {
-		Teacher t = si.Tlogin("scol", "12345");
-		System.out.println(t);
+		Student s = si.login("scol", "12345");
+		System.out.println(s);
 	}
 	
-	@Test // failed
+	@Test // passed
 	void viewStudents() {
 		Teacher t = tr.findById(1);
-		Set<Student> s = t.getStudents();
+		Set<Student> s = si.viewStudents(t);
 		System.out.println(s);
 	}
 	
 
-	@Test // failed
+	@Test 
 	void submitAssignment() {
 		
 	}
@@ -192,10 +200,10 @@ class LeariningAppApplicationTests {
 		si.AssignAssignment(a);
 	}
 	
-	@Test // failed
+	@Test // passed
 	void viewAssignments() {
 		Student s = sr.findById(2);
-		Set<Assignment> a = s.getAssignments();
+		Set<Assignment> a = si.viewAssignments(s);
 		System.out.println(a);
 	}
 	
@@ -205,10 +213,10 @@ class LeariningAppApplicationTests {
 		si.deleteAssignment(a);
 	}
 	
-	@Test // failed
+	@Test // passed
 	void viewAssignmentsT() {
 		Teacher t = tr.findById(1);
-		Set<Assignment> a = t.getAssignments();
+		Set<Assignment> a = si.viewAssignmentsT(t);
 		System.out.println(a);
 	}
 	

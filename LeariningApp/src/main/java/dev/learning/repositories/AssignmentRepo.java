@@ -13,9 +13,8 @@ import dev.learning.entities.Teacher;
 public interface AssignmentRepo extends CrudRepository<Assignment, Integer>{
 	
 	public Assignment findById(int id);
-//	public Set<Assignment> viewAssignmentsT(Teacher teacher);
-//	public Set<Assignment> viewAssignments(Student student);
-//	public Set<Assignment> findAssignmentsForStudent(int sid);
-//	public Assignment comment(Assignment a, String comment);
+	public Set<Assignment> findByTeacher(Teacher teacher);
+	public Set<Assignment> findByStudent(Student student);
+
 
 }

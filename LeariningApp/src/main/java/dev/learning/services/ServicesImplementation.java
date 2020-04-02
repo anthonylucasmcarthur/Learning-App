@@ -40,16 +40,17 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 			}
 		} catch (NullPointerException n) {
 			System.out.println("Invalid username");
+			n.printStackTrace();
 			return null;
 		}
 
 	}
 
-	@Override
-	public Assignment commentT(Assignment a, int aid, String comment) {
-		Assignment tc = ar.comment(a, comment);
-		return tc;
-	}
+//	@Override
+//	public Assignment commentT(Assignment a, int aid, String comment) {
+//		Assignment tc = ar.comment(a, comment);
+//		return tc;
+//	}
 
 	@Override
 	public Student login(String username, String password) {
@@ -74,24 +75,20 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 
 	@Override
 	public Set<Student> viewStudents(Teacher teacher) {
-		Set<Student> s = teacher.getStudents();
+		Set<Student> s = sr.findByTeacher(teacher);
 		return s;
 	}
 
-	@Override
-	public Set<Assignment> viewAssignmentByStudent(int sid) {
-		Set<Assignment> a = ar.findAssignmentByStudent(sid);
-		return a;
-	}
 
-	@Override
-	public Assignment submitAssignment(Assignment a, int aid, String comment) {
-		return ar.save(a);
-	}
+//	@Override
+//	public Student submitAssignment(Assignment a, int aid, String comment) {
+//		return ar.save(a);
+//	}
 
 	
 	@Override
 	public Assignment AssignAssignment(Assignment a) {
+		System.out.println("service");
 		return ar.save(a);
 	}
 
@@ -102,8 +99,7 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 
 	@Override
 	public Set<Assignment> viewAssignments(Student s) {
-		Set<Assignment> sa = s.getAssignments();
-		return sa;
+		return ar.findByStudent(s);
 	}
 
 	@Override
@@ -114,15 +110,25 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 
 	@Override
 	public Set<Assignment> viewAssignmentsT(Teacher t) {
-		Set<Assignment> st = t.getAssignments();
-		return st;
+		return ar.findByTeacher(t);
 	}
 
 	@Override
 	public Assignment getAssignmentById(int aid) {
-		Assignment a = ar.findById(aid);
-		return a;
+		return ar.findById(aid);
 	}
 
 
+	@Override
+	public Student getStudentById(int id) {
+		return sr.findById(id);
+	}
+
+	@Override
+	public Teacher getTeacherById(int id) {
+		return tr.findById(id);
+	}
+
+
+	
 }

@@ -10,6 +10,7 @@ public interface StudentServices {
 	
 	public Student login(String username, String password);
 	public Set<Student> viewStudents(Teacher teacher);
+	public Student getStudentById(int id);
 	
 	
 }
