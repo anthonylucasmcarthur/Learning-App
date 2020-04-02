@@ -40,6 +40,7 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 			}
 		} catch (NullPointerException n) {
 			System.out.println("Invalid username");
+			n.printStackTrace();
 			return null;
 		}
 

@@ -16,7 +16,6 @@ public class Assignment {
 	@Id
 	@GeneratedValue
 	@Column(name = "a_id")
-	
 	private int id;
 	
 	@Column(name = "description")

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.learning.entities.Assignment;
 import dev.learning.entities.Student;
-import dev.learning.entities.Teacher;
 import dev.learning.services.ServicesImplementation;
 
 @Component
@@ -28,8 +27,8 @@ public class StudentController {
 	
 	
 	@PostMapping(value = "/login")
-	public Student login(String username, String password) {
-		return si.login(username, password);
+	public Student login(@RequestBody Student student) {
+		return si.login(student.getUsername(), student.getPassword());
 	}
 
 	@GetMapping(value = "/assignments/{id}", produces = "application/json")
