@@ -107,8 +107,9 @@ class LeariningAppApplicationTests {
 		a.setStudent(student);
 		Teacher teacher = tr.findById(1);
 		a.setTeacher(teacher);
+		System.out.println("a");
 		ar.save(a);
-//		System.out.println(a);
+		System.out.println(a);
 //		Assignment assignment = ar.createAssignment(a);
 //		System.out.println(assignment);
 	}
