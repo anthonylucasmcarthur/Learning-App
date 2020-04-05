@@ -29,21 +29,22 @@ public class AssignmentController {
 
 	
 	@PostMapping(value = "/create")
-	public Assignment addAssignment(String description, String duedate, double weight) {
+	public Assignment addAssignment(@RequestBody Assignment assignment) {
 		Assignment a = new Assignment();
-		a.setDescription(description);
-		a.setDuedate(duedate);
-		a.setWeight(weight);
-		System.out.println("controller");
+		a.setDescription(assignment.getDescription());
+		a.setDuedate(assignment.getDuedate());
+		a.setWeight(assignment.getWeight());
+		a.setTeacher(assignment.getTeacher());
+		a.setStudent(assignment.getStudent());
 		return si.AssignAssignment(a);
 	}
 
 	
 	@PutMapping(value = "/grade/{id}", produces = "application/json")
-	public Assignment gradeAssignment(int id, double grade, String comment) {
+	public Assignment gradeAssignment(@PathVariable("id")int id, @RequestBody Assignment a) {
 		Assignment assignment = si.getAssignmentById(id);
-		assignment.setGrade(grade);
-		assignment.setComment(comment);
+		assignment.setGrade(a.getGrade());
+		assignment.setComment(a.getComment());
 		return si.gradeAssignment(assignment);
 	}
 	

@@ -88,7 +88,6 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 	
 	@Override
 	public Assignment AssignAssignment(Assignment a) {
-		System.out.println("service");
 		return ar.save(a);
 	}
 
