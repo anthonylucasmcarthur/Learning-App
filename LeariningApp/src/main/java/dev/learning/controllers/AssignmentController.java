@@ -39,6 +39,12 @@ public class AssignmentController {
 		return si.AssignAssignment(a);
 	}
 
+	@PutMapping(value = "/submit/{id}", produces = "application/json")
+	public Assignment submitAssignment(@PathVariable("id")int id, @RequestBody Assignment as) {
+		Assignment a = si.getAssignmentById(id);
+		a.setSubmission(as.getSubmission());
+		return si.submitAssignment(a);
+	}
 	
 	@PutMapping(value = "/grade/{id}", produces = "application/json")
 	public Assignment gradeAssignment(@PathVariable("id")int id, @RequestBody Assignment a) {

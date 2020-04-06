@@ -28,6 +28,9 @@ public class Assignment {
 	@Column(name = "weight")
 	private double weight;
 	
+	@Column(name = "submission")
+	private String submission;
+	
 	@Column(name = "grade")
 	private double grade;
 	
@@ -80,6 +83,15 @@ public class Assignment {
 		this.weight = weight;
 	}
 
+	
+	public String getSubmission() {
+		return submission;
+	}
+
+	public void setSubmission(String submission) {
+		this.submission = submission;
+	}
+
 	public double getGrade() {
 		return grade;
 	}
@@ -115,8 +127,11 @@ public class Assignment {
 	@Override
 	public String toString() {
 		return "Assignment [id=" + id + ", description=" + description + ", duedate=" + duedate + ", weight=" + weight
-				+ ", grade=" + grade + ", comment=" + comment + ", teacher=" + teacher + ", student=" + student + "]";
+				+ ", submission=" + submission + ", grade=" + grade + ", comment=" + comment + ", teacher=" + teacher
+				+ ", student=" + student + "]";
 	}
+
+	
 
 	
 
