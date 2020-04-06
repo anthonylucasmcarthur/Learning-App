@@ -34,7 +34,9 @@ public class Student {
 	@Column(name = "password")
 	private String password;
 
-
+	@Column(name = "grade")
+	private double grade;
+	
 	@ManyToOne
 	@JoinColumn(name = "t_id")
 	private Teacher teacher;
@@ -96,6 +98,17 @@ public class Student {
 		this.password = password;
 	}
 
+	
+	
+	public double getGrade() {
+		return grade;
+	}
+
+
+	public void setGrade(double grade) {
+		this.grade = grade;
+	}
+
 
 	public Teacher getTeacher() {
 		return teacher;
@@ -107,14 +120,16 @@ public class Student {
 	}
 
 
-
-
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", password=" + password + ", teacher=" + teacher + "]";
+				+ ", password=" + password + ", grade=" + grade + ", teacher=" + teacher + "]";
 	}
+
+
 	
+
+
 	
 
 

@@ -97,17 +97,16 @@ class LeariningAppApplicationTests {
 	@Test //passed
 	void createAssignment() {
 		Assignment a = new Assignment();
-		a.setId(0);
-		a.setDescription("Read War and Peace");
-		a.setDuedate("4/5");
-		a.setWeight(.1);
-		a.setGrade(0.0);
-		a.setComment("");
+//		a.setId(0);
+		a.setDescription("Write an essay on Plato");
+		a.setDuedate("4/17");
+		a.setWeight(.3);
+//		a.setGrade(0.0);
+//		a.setComment("");
 		Student student = sr.findById(2);
 		a.setStudent(student);
 		Teacher teacher = tr.findById(1);
 		a.setTeacher(teacher);
-		System.out.println("a");
 		ar.save(a);
 		System.out.println(a);
 //		Assignment assignment = ar.createAssignment(a);
@@ -130,9 +129,10 @@ class LeariningAppApplicationTests {
 	
 	@Test // passed
 	void updateAssignment() {
-		Assignment assignment = ar.findById(1);
-		assignment.setGrade(3.0);
-		assignment.setComment("Good job");
+		Assignment assignment = ar.findById(2);
+		assignment.setSubmission("");
+		assignment.setGrade(0.0);
+		assignment.setComment("");
 		ar.save(assignment);
 	}
 	

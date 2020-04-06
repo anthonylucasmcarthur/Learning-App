@@ -80,10 +80,10 @@ public class ServicesImplementation implements StudentServices, TeacherServices,
 	}
 
 
-//	@Override
-//	public Student submitAssignment(Assignment a, int aid, String comment) {
-//		return ar.save(a);
-//	}
+	@Override
+	public Assignment submitAssignment(Assignment a) {
+		return ar.save(a);
+	}
 
 	
 	@Override
