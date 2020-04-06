@@ -32,6 +32,12 @@ public class TeacherController {
 		return si.Tlogin(teacher.getUsername(), teacher.getPassword());
 	}
 
+	@GetMapping(value = "/{id}", produces = "application/json")
+	public Teacher getTeacher(@PathVariable("id")int id) {
+		Teacher teacher = si.getTeacherById(id);
+		return teacher;
+	}
+	
 	@GetMapping(value = "/students/{id}", produces = "application/json")
 	public Set<Student> getStudents(@PathVariable("id")int id) {
 		Teacher teacher = si.getTeacherById(id);

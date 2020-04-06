@@ -36,7 +36,11 @@ public class StudentController {
 		Student student = si.getStudentById(id);
 		return si.viewAssignments(student);
 	}
-	
+	@GetMapping(value = "/{id}", produces = "application/json")
+	public Student getStudent(@PathVariable("id")int id) {
+		Student student = si.getStudentById(id);
+		return student;
+	}
 
 	
 	
